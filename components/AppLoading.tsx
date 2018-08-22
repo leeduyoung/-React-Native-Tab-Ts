@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import styles from '../styles';
 
 interface IAppLoadingProps
 {
@@ -20,10 +21,15 @@ export default class AppLoading extends Component<IAppLoadingProps>
         super(props);
     }
 
+    public componentDidMount()
+    {
+        
+    }
+
     public render(): JSX.Element
     {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text>Loading....</Text>
             </View>
         );

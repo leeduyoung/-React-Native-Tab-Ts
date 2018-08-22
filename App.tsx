@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, Text, View, StatusBar } from 'react-native';
+
 import styles from './styles';
 import AppLoading from './components/AppLoading';
+import AppNavigator from './navigation/AppNavigator';
 
 interface IAppProps
 {
@@ -30,32 +32,32 @@ export default class App extends Component<IAppProps, IAppState>
         if(!this.state.isLoadingComplete)
         {
             return (
-                // <View style={styles.container}>
-                //     <Text>loading...</Text>
-                    <AppLoading 
-                        startAsync={this._loadResourcesAsync}
-                        onError={this._handleLoadingError}
-                        onFinish={this._handleFinishLoading}
-                    />
-                // </View>
+                <View style={{flex: 1, justifyContent: "center", alignItems: 'center'}}>
+                    <Text>loading...</Text>
+                </View>
             );
         }
         else
         {
             return (
                 <View style={styles.container}>
-                    <Text>Hello world!</Text>
+                    {/* <Text>Hello world!!!</Text> */}
+                    <AppNavigator />
                 </View>
             );
         }
+    }
+    
+    componentWillMount()
+    {
+        setTimeout(() => {
+            this._handleFinishLoading();
+        }, 1000);
     }
 
     private _loadResourcesAsync = async(): Promise<any> =>
     {
         console.log('_loadResourcesAsync called');
-        return new Promise((resolve, reject) => {
-            resolve(true);
-        });
     }
 
     private _handleLoadingError = (error: any) => 
