@@ -1,2 +1,6 @@
-# react-native-ts-seed
-# -React-Native-Tab-Ts
+# React-Native-Tab-Ts
+### react native tab navigation sample
+
+### Usage
+- npm i
+- react-native run-ios or react-native run-android
