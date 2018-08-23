@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-// import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -13,35 +12,9 @@ const HomeStack = createStackNavigator({
 });
 
 HomeStack.navigationOptions = {
-    tabBarLabel: 'Home',
-    //   tabBarIcon: ({ focused }) => (
-    //     <TabBarIcon
-    //       focused={focused}
-    //       name={
-    //         Platform.OS === 'ios'
-    //           ? `ios-information-circle${focused ? '' : '-outline'}`
-    //           : 'md-information-circle'
-    //       }
-    //     />
-    //   ),
-
+    tabBarLabel: '분석',
     tabBarIcon: (data: any) => {
-        // const { routeName } = "navigation.state";
-        const routeName = 'Home';
-        let iconName = '';
-
-        if (routeName === 'Home') 
-        {
-            iconName = `ios-information-circle${data.focused ? '' : '-outline'}`;
-        }
-        else if (routeName === 'Settings') 
-        {
-            iconName = `ios-options${data.focused ? '' : '-outline'}`;
-        }
-
-        // You can return any component that you like here! We usually use an
-        // icon component from react-native-vector-icons
-        return <Ionicons name={iconName} size={25} color={data.tintColor} />;
+        return <Ionicons name={Platform.OS === 'ios' ? 'ios-search':'md-search'} size={25} color={data.tintColor} />;
     },
 };
 
@@ -50,13 +23,10 @@ const LinksStack = createStackNavigator({
 });
 
 LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
-    //   tabBarIcon: ({ focused }) => (
-    //     <TabBarIcon
-    //       focused={focused}
-    //       name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-    //     />
-    //   ),
+    tabBarLabel: '추천',
+    tabBarIcon: (data: any) => {
+        return <Ionicons name={Platform.OS === 'ios' ? 'ios-thumbs-up':'md-thumbs-up'} size={25} color={data.tintColor} />;
+    },    
 };
 
 const SettingsStack = createStackNavigator({
@@ -64,13 +34,10 @@ const SettingsStack = createStackNavigator({
 });
 
 SettingsStack.navigationOptions = {
-    tabBarLabel: 'Settings',
-    // tabBarIcon: ({ focused }) => (
-    //     <TabBarIcon
-    //         focused={focused}
-    //         name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    //     />
-    // ),
+    tabBarLabel: '설정',
+    tabBarIcon: (data: any) => {
+        return <Ionicons name={Platform.OS === 'ios' ? 'ios-settings':'md-settings'} size={25} color={data.tintColor} />;
+    },    
 };
 
 export default createBottomTabNavigator({
